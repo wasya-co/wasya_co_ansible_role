@@ -1,0 +1,14 @@
+dependency:
+  name: galaxy
+  options:
+    requirements-file: requirements.yml
+platforms:
+  - name: molecule-ubuntu
+    image: piousbox/ubuntu-sshd:0.0.0
+
+    ansible_connection: ssh
+    ansible_user: root
+    ansible_host: 142.93.23.152
+    # ansible_port: 9102
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+    ansible_ssh_private_key_file: ~/.ssh/mac_id_rsa_2np

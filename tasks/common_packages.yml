@@ -1,0 +1,19 @@
+---
+- become: true
+  apt:
+    cache_valid_time: 3600
+    update_cache: yes
+
+- apt:
+    name:
+      - certbot
+      - git
+      - nginx
+      - python3-certbot-nginx
+      - screen
+      - silversearcher-ag
+      - tree
+      - vim
+      - zip
+    state: present
+  become: true

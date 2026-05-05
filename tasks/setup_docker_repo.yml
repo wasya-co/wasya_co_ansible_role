@@ -1,0 +1,14 @@
+
+##
+## packagedapp of sorts
+##
+---
+- name: docker_drupal
+  ansible.builtin.git:
+    repo: git@github.com:wasya-co/docker_drupal.git
+    dest: /opt/projects/docker_drupal
+    version: '0.0.0'
+    key_file: {{ git_key_path }}
+    accept_hostkey: true
+    update: yes
+
