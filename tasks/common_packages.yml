@@ -15,5 +15,6 @@
       - tree
       - vim
       - zip
+      - openjdk-17-jre # for jenkins runner
     state: present
   become: true

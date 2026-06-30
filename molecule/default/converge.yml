@@ -4,10 +4,10 @@
   tasks:
     ## setup_ubuntu
     - include_role:
-        name: roles/wco
+        name: roles/wasyaco
         tasks_from: common_packages
     - include_role:
-        name: roles/wco
+        name: roles/wasyaco
         tasks_from: common_config
 
 - name: Fail if molecule group is missing
