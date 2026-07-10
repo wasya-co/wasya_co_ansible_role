@@ -1,0 +1,24 @@
+---
+- name: Create .aws directory
+  file:
+    path: "{{ aws_home }}/.aws"
+    state: directory
+    owner: "{{ aws_user }}"
+    group: "{{ aws_group }}"
+    mode: "0700"
+
+- name: Install credentials
+  template:
+    src: root/_aws/credentials
+    dest: "{{ aws_home }}/.aws/credentials"
+    owner: "{{ aws_user }}"
+    group: "{{ aws_group }}"
+    mode: "0600"
+
+- name: Install config
+  template:
+    src: root/_aws/config
+    dest: "{{ aws_home }}/.aws/config"
+    owner: "{{ aws_user }}"
+    group: "{{ aws_group }}"
+    mode: "0644"
