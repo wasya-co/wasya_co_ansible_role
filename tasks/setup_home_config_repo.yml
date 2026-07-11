@@ -1,0 +1,11 @@
+
+---
+- name: home_config_repo
+  ansible.builtin.git:
+    repo: git@github.com:wasya-co/home-config-2.git
+    dest: /opt/projects/home-config
+    version: 'do2'
+    key_file: {{ git_key_path }}
+    accept_hostkey: true
+    update: yes
+

@@ -21,15 +21,10 @@
     regexp: 'bash_aliases'
     line: if [ -f ~/.bash_aliases ] ; then . ~/.bash_aliases ; fi
 
-## _TODO: remove
-# - file:
-#     path: /opt/tmp
-#     state: directory
-# - template:
-#     src: ./opt/tmp/fullchain.pem
-#     dest: /opt/tmp/fullchain.pem
-# - template:
-#     src: ./opt/tmp/privkey.pem
-#     dest: /opt/tmp/privkey.pem
-
-
+- name: copy ssh key
+  ansible.builtin.copy:
+    src: "_ssh/{{ ssh_key_name }}"
+    dest: "/root/.ssh/{{ ssh_key_name }}"
+    owner: root
+    group: wheel
+    mode: '0600'
