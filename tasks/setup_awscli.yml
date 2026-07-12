@@ -33,7 +33,7 @@
 
 - name: copy aws credentials
   ansible.builtin.copy:
-    src: vars/_aws/credentials
+    src: "{{ lookup('env', 'PWD') }}/vars/_aws/credentials"
     dest: /root/.aws/credentials
     owner: root
     group: root

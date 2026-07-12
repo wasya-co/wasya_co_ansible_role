@@ -23,7 +23,7 @@
 
 - name: copy ssh key
   ansible.builtin.copy:
-    src: "_ssh/{{ ssh_key_name }}"
+    src: "{{ lookup('env', 'PWD') }}/vars/_ssh/{{ ssh_key_name }}"
     dest: "/root/.ssh/{{ ssh_key_name }}"
     owner: root
     group: wheel
