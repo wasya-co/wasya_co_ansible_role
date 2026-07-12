@@ -11,30 +11,31 @@
     dest: /tmp
     remote_src: true
 - name: Install AWS CLI
-  command: /tmp/aws/install --update
+  command: /tmp/aws/install # --update
   args:
     creates: /usr/local/bin/aws
 
 - name: Create .aws directory
   file:
-    path: "{{ aws_home }}/.aws"
+    path: /root/.aws
     state: directory
-    owner: "{{ aws_user }}"
-    group: "{{ aws_group }}"
+    owner: root
+    group: root
     mode: "0700"
-
-- name: Install credentials
-  template:
-    src: root/_aws/credentials
-    dest: "{{ aws_home }}/.aws/credentials"
-    owner: "{{ aws_user }}"
-    group: "{{ aws_group }}"
-    mode: "0600"
 
 - name: Install config
   template:
     src: root/_aws/config
-    dest: "{{ aws_home }}/.aws/config"
-    owner: "{{ aws_user }}"
-    group: "{{ aws_group }}"
+    dest: "/root/.aws/config"
+    owner: root
+    group: root
     mode: "0644"
+
+- name: copy aws credentials
+  ansible.builtin.copy:
+    src: vars/_aws/credentials
+    dest: /root/.aws/credentials
+    owner: root
+    group: root
+    mode: '0600'
+
